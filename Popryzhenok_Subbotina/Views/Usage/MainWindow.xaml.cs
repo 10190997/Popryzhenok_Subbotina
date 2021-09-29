@@ -14,10 +14,13 @@ namespace Popryzhenok_Subbotina
 
         private void MainFrame_ContentRendered(object sender, System.EventArgs e)
         {
-            if (MainFrame.CanGoBack)
-            {
-                ButtonBack.Visibility = Visibility.Visible;
-            }
+            ButtonBack.Visibility = MainFrame.CanGoBack ?
+                Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.GoBack();
         }
     }
 }

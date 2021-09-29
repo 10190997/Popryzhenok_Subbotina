@@ -12,6 +12,8 @@ namespace Popryzhenok_Subbotina.Views.Tables
     /// </summary>
     public partial class AgentPage : Page
     {
+        private List<Agent> agents;
+
         /// <summary>
         /// Инициализация компонентов
         /// </summary>
@@ -21,6 +23,7 @@ namespace Popryzhenok_Subbotina.Views.Tables
         }
 
         #region Отображение данных
+
         /// <summary>
         /// При открытии страницы отображает данные в таблице
         /// </summary>
@@ -37,6 +40,7 @@ namespace Popryzhenok_Subbotina.Views.Tables
             FilterBox.SelectedIndex = 0;
             GetAgents(SortBox.Text);
         }
+
         /// <summary>
         /// Возвращает список агентов по заданным параметрам
         /// </summary>
@@ -107,14 +111,16 @@ namespace Popryzhenok_Subbotina.Views.Tables
 
             if (!string.IsNullOrEmpty(search) && !string.IsNullOrWhiteSpace(search))
             {
-                listAgents = listAgents.Where(c => c.Title.ToLower().Contains(search.ToLower()) || 
+                listAgents = listAgents.Where(c => c.Title.ToLower().Contains(search.ToLower()) ||
                 c.Email.ToLower().Contains(search.ToLower()) || c.Phone.Contains(search)).ToList();
             }
             AgentGrid.ItemsSource = listAgents;
         }
-        #endregion
+
+        #endregion Отображение данных
 
         #region Поиск данных
+
         /// <summary>
         /// При изменении текста в поле поиска отображает соответсвующие данные
         /// </summary>
@@ -124,6 +130,7 @@ namespace Popryzhenok_Subbotina.Views.Tables
         {
             GetAgents(SortBox.Text, FilterBox.Text, SearchBox.Text);
         }
+
         /// <summary>
         /// При изменении выбора в поле фильтрации отображает соответсвующие данные
         /// </summary>
@@ -133,6 +140,7 @@ namespace Popryzhenok_Subbotina.Views.Tables
         {
             GetAgents(SortBox.Text, (FilterBox.SelectedValue).ToString(), SearchBox.Text);
         }
+
         /// <summary>
         /// При изменении выбора в поле сортировки отображает соответсвующие данные
         /// </summary>
@@ -142,11 +150,18 @@ namespace Popryzhenok_Subbotina.Views.Tables
         {
             GetAgents(((ComboBoxItem)SortBox.SelectedValue).Content.ToString(), FilterBox.Text, SearchBox.Text);
         }
-        #endregion
+
+        #endregion Поиск данных
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(new PageAddAgent(new Agent()));
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Agent agent = AgentGrid.SelectedItem as Agent;
+            NavigationService.Navigate(new PageAddAgent(agent));
         }
     }
 }

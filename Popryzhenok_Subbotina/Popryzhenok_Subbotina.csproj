@@ -67,7 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="PageAddAgent.xaml">
+    <Page Include="Views\Tables\PageAddAgent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,7 +139,7 @@
     <Compile Include="Models\Supplier.cs">
       <DependentUpon>Popryzhenok.tt</DependentUpon>
     </Compile>
-    <Compile Include="PageAddAgent.xaml.cs">
+    <Compile Include="Views\Tables\PageAddAgent.xaml.cs">
       <DependentUpon>PageAddAgent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\AppData.cs" />
