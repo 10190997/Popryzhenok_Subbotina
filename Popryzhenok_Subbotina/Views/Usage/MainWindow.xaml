@@ -1,0 +1,53 @@
+﻿<Window
+    x:Class="Popryzhenok_Subbotina.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Попрыженок"
+    Width="800"
+    Height="450"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d"
+    MinHeight="300"
+    MinWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="6*" />
+        </Grid.ColumnDefinitions>
+        <Image
+            Grid.Row="0"
+            Grid.Column="0"
+            Source="../../Images/Попрыженок.png" />
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            FontSize="21"
+            FontWeight="Bold"
+            Text="Попрыженок"
+            TextAlignment="Center" />
+        <Button
+            x:Name="ButtonBack"
+            Content="Назад"
+            Visibility="Hidden"
+            Style="{DynamicResource SmallButton}"
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalAlignment="Right" />
+        <Frame
+            ContentRendered="MainFrame_ContentRendered"
+            x:Name="MainFrame"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            NavigationUIVisibility="Hidden"
+            Source="../Tables/AgentPage.xaml" />
+    </Grid>
+</Window>
