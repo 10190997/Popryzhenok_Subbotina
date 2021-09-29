@@ -1,8 +1,11 @@
 # Popryzhenok_Subbotina
-Как развернуть скрипт Popryzhenok_Subbotina.sql
+Как запустить проект
 
-Запустить MS SQL Server Management Studio 18.8
-В окне "Имя сервера" ввести: (localdb)\MSSQLLocalDB, нажать Connect
-Нажать "New Query"
-Скопировать содержимое файла mssql.sql
-Нажать F5. База данных создана и заполнена данными
+1. Склонировать проект
+2. Запустить MS SQL Server Management Studio 18.8
+3. В окне "Имя сервера" ввести: (localdb)\MSSQLLocalDB, нажать Connect
+4. Нажать "New Query"
+5. Скопировать содержимое файла mssql.sql
+6. Нажать F5. База данных создана и заполнена данными
+7. В Visual Studio с открытым склонированным нажать F5
+8. Наслаждаться дизайном
