@@ -30,7 +30,7 @@
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="0">
             <TextBlock Text="Тип: " />
-            <ComboBox x:Name="cbType" ItemsSource="{Binding AgentType.Title}" />
+            <ComboBox x:Name="cbType" ItemsSource="{Binding AgentType}" />
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="0">
             <TextBlock Text="Адрес: " />

@@ -1,4 +1,6 @@
 ﻿using Popryzhenok_Subbotina.Models;
+using Popryzhenok_Subbotina.Utils;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace Popryzhenok_Subbotina
@@ -14,6 +16,8 @@ namespace Popryzhenok_Subbotina
         {
             InitializeComponent();
             NewAgent = agent;
+            cbType.ItemsSource = AppData.db.AgentTypes.ToList();
+            cbType.SelectedIndex = 0;
         }
     }
 }
