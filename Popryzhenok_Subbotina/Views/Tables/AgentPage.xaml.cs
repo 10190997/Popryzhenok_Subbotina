@@ -12,8 +12,6 @@ namespace Popryzhenok_Subbotina.Views.Tables
     /// </summary>
     public partial class AgentPage : Page
     {
-        private List<Agent> agents;
-
         /// <summary>
         /// Инициализация компонентов
         /// </summary>
