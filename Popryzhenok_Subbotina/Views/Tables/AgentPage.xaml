@@ -56,7 +56,8 @@
             Grid.Column="0"
             Grid.ColumnSpan="3"
             AutoGenerateColumns="False"
-            CanUserAddRows="False">
+            CanUserAddRows="False"
+            MaxWidth="800">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="1*">
                     <DataGridTemplateColumn.CellTemplate>
@@ -79,6 +80,7 @@
                                     Grid.Row="0"
                                     Grid.RowSpan="5"
                                     Grid.Column="0"
+                                    Margin="5"
                                     Source="{Binding LogoAgent}" />
                                 <StackPanel
                                     Grid.Row="0"
@@ -119,8 +121,7 @@
                                     <Button
                                         Width="150"
                                         Click="Button_Click"
-                                        Content="Редактировать"
-                                        Style="{DynamicResource SmallButton}" />
+                                        Content="Редактировать" />
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -134,7 +135,6 @@
             Grid.Column="0"
             Grid.ColumnSpan="3"
             Click="ButtonAdd_Click"
-            Content="Добавить"
-            Style="{DynamicResource SmallButton}" />
+            Content="Добавить" />
     </Grid>
 </Page>

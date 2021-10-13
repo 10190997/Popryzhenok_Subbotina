@@ -7,6 +7,6 @@
             return Title;
         }
 
-        public string LogoAgent => Logo == null ? "../../Images/picture.png" : "../.." + Logo;
+        public string LogoAgent => Logo ?? "../../Images/picture.png";
     }
 }

@@ -38,7 +38,6 @@
             Content="Назад"
             Visibility="Hidden"
             Click="ButtonBack_Click"
-            Style="{DynamicResource SmallButton}"
             Grid.Row="0"
             Grid.Column="1"
             HorizontalAlignment="Right" />

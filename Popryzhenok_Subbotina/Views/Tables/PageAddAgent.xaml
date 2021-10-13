@@ -74,8 +74,9 @@
                 <Button
                     x:Name="buttonLogo"
                     Content="Просмотр..."
-                    Style="{DynamicResource SmallButton}" />
+                    Click="buttonLogo_Click" />
                 <Image
+                    x:Name="photo"
                     Width="50"
                     Height="50"
                     Margin="15,0,0,0"
@@ -92,12 +93,11 @@
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             Orientation="Horizontal">
-            <Button Content="Сохранить" Style="{DynamicResource SmallButton}" />
-            <Button Content="Отмена" Style="{DynamicResource SmallButton}" />
+            <Button Content="Сохранить" />
+            <Button Content="Отмена" />
             <Button
                 Background="#F9969E"
-                Content="Удалить"
-                Style="{DynamicResource SmallButton}" />
+                Content="Удалить" />
         </StackPanel>
     </Grid>
 </Page>
