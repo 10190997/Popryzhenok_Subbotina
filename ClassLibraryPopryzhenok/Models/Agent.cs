@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Popryzhenok_Subbotina.Models
+namespace ClassLibraryPopryzhenok.Models
 {
     using System;
     using System.Collections.Generic;

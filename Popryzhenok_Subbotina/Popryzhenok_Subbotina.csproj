@@ -79,70 +79,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Models\Agent.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentPartial.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\AgentPriorityHistory.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentType.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AgentTypePartial.cs" />
-    <Compile Include="Models\Material.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaterialCountHistory.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MaterialType.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Popryzhenok.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Popryzhenok.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Popryzhenok.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Popryzhenok.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Popryzhenok.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Product.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductCostHistory.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductMaterial.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductSale.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductType.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Shop.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Supplier.cs">
-      <DependentUpon>Popryzhenok.tt</DependentUpon>
-    </Compile>
     <Compile Include="Views\Tables\PageAddAgent.xaml.cs">
       <DependentUpon>PageAddAgent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utils\AppData.cs" />
     <Compile Include="Views\Tables\AgentPage.xaml.cs">
       <DependentUpon>AgentPage.xaml</DependentUpon>
     </Compile>
@@ -169,12 +112,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\Popryzhenok.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Popryzhenok.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\Popryzhenok.edmx.diagram">
-      <DependentUpon>Popryzhenok.edmx</DependentUpon>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -326,16 +265,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\Popryzhenok.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Popryzhenok.edmx</DependentUpon>
-      <LastGenOutput>Popryzhenok.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Popryzhenok.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Popryzhenok.edmx</DependentUpon>
-      <LastGenOutput>Popryzhenok.cs</LastGenOutput>
-    </Content>
+    <ProjectReference Include="..\ClassLibraryPopryzhenok\ClassLibraryPopryzhenok.csproj">
+      <Project>{8DC78BD9-1A41-4B09-AD78-543C2F177920}</Project>
+      <Name>ClassLibraryPopryzhenok</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

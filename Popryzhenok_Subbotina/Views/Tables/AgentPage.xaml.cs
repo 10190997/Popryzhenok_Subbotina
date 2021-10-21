@@ -1,5 +1,5 @@
-﻿using Popryzhenok_Subbotina.Models;
-using Popryzhenok_Subbotina.Utils;
+﻿using ClassLibraryPopryzhenok.Models;
+using ClassLibraryPopryzhenok.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -18,7 +18,6 @@ namespace Popryzhenok_Subbotina.Views.Tables
         public AgentPage()
         {
             InitializeComponent();
-            GetAgents();
         }
 
         #region Отображение данных
@@ -34,9 +33,10 @@ namespace Popryzhenok_Subbotina.Views.Tables
             FilterBox.Items.Add("Все типы");
             foreach (AgentType type in AppData.db.AgentTypes.ToList())
             {
-                FilterBox.Items.Add(type);
+                FilterBox.Items.Add(type.Title.ToString());
             }
             FilterBox.SelectedIndex = 0;
+            AppData.db.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
             GetAgents(SortBox.Text);
         }
 
@@ -136,11 +136,6 @@ namespace Popryzhenok_Subbotina.Views.Tables
         {
             Agent agent = AgentGrid.SelectedItem as Agent;
             NavigationService.Navigate(new PageAddAgent(agent));
-        }
-
-        private void Page_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            GetAgents();
         }
     }
 }

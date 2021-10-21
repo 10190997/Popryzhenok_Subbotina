@@ -1,6 +1,6 @@
-﻿using Popryzhenok_Subbotina.Models;
+﻿using ClassLibraryPopryzhenok.Models;
 
-namespace Popryzhenok_Subbotina.Utils
+namespace ClassLibraryPopryzhenok.Utils
 {
     public class AppData
     {

@@ -7,38 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Popryzhenok_Subbotina.Models
+namespace ClassLibraryPopryzhenok.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Material
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Material()
+        public Product()
         {
-            this.MaterialCountHistories = new HashSet<MaterialCountHistory>();
+            this.ProductCostHistories = new HashSet<ProductCostHistory>();
             this.ProductMaterials = new HashSet<ProductMaterial>();
-            this.Suppliers = new HashSet<Supplier>();
+            this.ProductSales = new HashSet<ProductSale>();
         }
     
         public int ID { get; set; }
         public string Title { get; set; }
-        public int CountInPack { get; set; }
-        public string Unit { get; set; }
-        public Nullable<double> CountInStock { get; set; }
-        public double MinCount { get; set; }
+        public Nullable<int> ProductTypeID { get; set; }
+        public string ArticleNumber { get; set; }
         public string Description { get; set; }
-        public decimal Cost { get; set; }
         public string Image { get; set; }
-        public int MaterialTypeID { get; set; }
+        public Nullable<int> ProductionPersonCount { get; set; }
+        public Nullable<int> ProductionWorkshopNumber { get; set; }
+        public decimal MinCostForAgent { get; set; }
     
-        public virtual MaterialType MaterialType { get; set; }
+        public virtual ProductType ProductType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MaterialCountHistory> MaterialCountHistories { get; set; }
+        public virtual ICollection<ProductCostHistory> ProductCostHistories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductMaterial> ProductMaterials { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supplier> Suppliers { get; set; }
+        public virtual ICollection<ProductSale> ProductSales { get; set; }
     }
 }

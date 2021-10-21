@@ -7,18 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Popryzhenok_Subbotina.Models
+namespace ClassLibraryPopryzhenok.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Shop
+    public partial class ProductType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ProductType()
+        {
+            this.Products = new HashSet<Product>();
+        }
+    
         public int ID { get; set; }
         public string Title { get; set; }
-        public string Address { get; set; }
-        public int AgentID { get; set; }
+        public Nullable<double> DefectedPercent { get; set; }
     
-        public virtual Agent Agent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

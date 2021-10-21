@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Popryzhenok_Subbotina.Models
+namespace ClassLibraryPopryzhenok.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductCostHistory
+    public partial class ProductMaterial
     {
-        public int ID { get; set; }
         public int ProductID { get; set; }
-        public System.DateTime ChangeDate { get; set; }
-        public decimal CostValue { get; set; }
+        public int MaterialID { get; set; }
+        public Nullable<double> Count { get; set; }
     
+        public virtual Material Material { get; set; }
         public virtual Product Product { get; set; }
     }
 }
