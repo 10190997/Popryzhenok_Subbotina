@@ -16,7 +16,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10" />
+            <RowDefinition Height="20" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
@@ -24,37 +24,47 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
+        <TextBlock 
+            HorizontalAlignment="Center"
+            FontSize="16"
+            Text="Данные агента" 
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2"/>
         <StackPanel Grid.Row="1" Grid.Column="0">
             <TextBlock Text="Название: " />
-            <TextBox x:Name="tbTitle" />
+            <TextBox x:Name="tbTitle" Text="{Binding Title}" />
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="0">
             <TextBlock Text="Тип: " />
-            <ComboBox x:Name="cbType" ItemsSource="{Binding AgentType}" />
+            <ComboBox 
+                x:Name="cbType" 
+                SelectedItem="{Binding AgentType}" 
+                DisplayMemberPath="Title" />
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="0">
             <TextBlock Text="Адрес: " />
-            <TextBox x:Name="tbAddress" />
+            <TextBox x:Name="tbAddress" Text="{Binding Address}" />
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="0">
             <TextBlock Text="ИНН: " />
-            <TextBox x:Name="tbINN" />
+            <TextBox x:Name="tbINN" Text="{Binding INN}" />
         </StackPanel>
         <StackPanel Grid.Row="5" Grid.Column="0">
             <TextBlock Text="КПП: " />
-            <TextBox x:Name="tbKPP" />
+            <TextBox x:Name="tbKPP" Text="{Binding KPP}" />
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Text="Директор: " />
-            <TextBox x:Name="tbDirector" />
+            <TextBox x:Name="tbDirector" Text="{Binding DirectorName}" />
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1">
             <TextBlock Text="Телефон: " />
-            <TextBox x:Name="tbPhone" />
+            <TextBox x:Name="tbPhone" Text="{Binding Phone}" />
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1">
             <TextBlock Text="Email: " />
-            <TextBox x:Name="tbEmail" />
+            <TextBox x:Name="tbEmail" Text="{Binding Email}" />
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="1">
             <TextBlock
@@ -70,7 +80,7 @@
                     FontStyle="Italic"
                     Foreground="#FF999999"
                     IsReadOnly="True"
-                    Text="picture.png" />
+                    Text="{Binding LogoAgent}" />
                 <Button
                     x:Name="buttonLogo"
                     Content="Просмотр..."
@@ -85,7 +95,7 @@
         </StackPanel>
         <StackPanel Grid.Row="5" Grid.Column="1">
             <TextBlock Text="Приоритет:" />
-            <TextBox x:Name="tbPriority" />
+            <TextBox x:Name="tbPriority" Text="{Binding Priority}" />
         </StackPanel>
         <StackPanel
             Grid.Row="6"
@@ -93,9 +103,11 @@
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             Orientation="Horizontal">
-            <Button Content="Сохранить" />
-            <Button Content="Отмена" />
+            <Button x:Name="btnSave" Content="Сохранить" Click="btnSave_Click" />
+            <Button x:Name="btnCancel" Content="Отмена" Click="btnCancel_Click" />
             <Button
+                Click="btnDelete_Click"
+                x:Name="btnDelete"
                 Background="#F9969E"
                 Content="Удалить" />
         </StackPanel>

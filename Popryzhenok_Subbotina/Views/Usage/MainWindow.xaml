@@ -20,9 +20,15 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="6*" />
         </Grid.ColumnDefinitions>
+        <Canvas 
+            Background="#F9969E" 
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2"/>
         <Image
             Grid.Row="0"
             Grid.Column="0"
+            Margin="5"
             Source="../../Images/Попрыженок.png" />
         <TextBlock
             Grid.Row="0"
@@ -31,6 +37,7 @@
             VerticalAlignment="Center"
             FontSize="21"
             FontWeight="Bold"
+            Foreground="White"
             Text="Попрыженок"
             TextAlignment="Center" />
         <Button

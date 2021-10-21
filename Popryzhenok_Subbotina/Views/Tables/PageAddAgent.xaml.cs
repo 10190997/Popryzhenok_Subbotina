@@ -6,6 +6,7 @@ using Microsoft.Win32;
 using System.IO;
 using System;
 using System.Windows.Media.Imaging;
+using System.Windows;
 
 namespace Popryzhenok_Subbotina
 {
@@ -15,11 +16,18 @@ namespace Popryzhenok_Subbotina
     public partial class PageAddAgent : Page
     {
         public Agent NewAgent { get; set; }
-
         public PageAddAgent(Agent agent)
         {
             InitializeComponent();
-            NewAgent = agent;
+            if (agent != null)
+            {
+                NewAgent = agent;
+                if (NewAgent.Logo != null)
+                {
+                    photo.Source = new BitmapImage(new Uri(Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + NewAgent.LogoAgent));
+                }
+            }
+            DataContext = NewAgent;
             cbType.ItemsSource = AppData.db.AgentTypes.ToList();
             cbType.SelectedIndex = 0;
         }
@@ -42,6 +50,37 @@ namespace Popryzhenok_Subbotina
                 string filename = openFileDialog.FileName;
                 photo.Source = new BitmapImage(new Uri(filename));
                 tbLogo.Text = Path.GetFileName(filename);
+            }
+        }
+
+        private void btnSave_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void btnDelete_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (NewAgent != null)
+            {
+                if (MessageBox.Show("Вы уверены?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        AppData.db.Agents.Remove(NewAgent);
+                        AppData.db.SaveChanges();
+                        MessageBox.Show("Успешно удалено");
+                        NavigationService.GoBack();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                }
             }
         }
     }

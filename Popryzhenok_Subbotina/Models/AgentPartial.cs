@@ -7,6 +7,13 @@
             return Title;
         }
 
-        public string LogoAgent => Logo ?? "../../Images/picture.png";
+        public string LogoAgent
+        {
+            get
+            {
+                return Logo ?? "../../Images/picture.png";
+            }
+            set { }
+        }
     }
 }

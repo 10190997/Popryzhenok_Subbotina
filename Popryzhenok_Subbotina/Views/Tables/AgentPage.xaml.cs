@@ -18,6 +18,7 @@ namespace Popryzhenok_Subbotina.Views.Tables
         public AgentPage()
         {
             InitializeComponent();
+            GetAgents();
         }
 
         #region Отображение данных
@@ -77,34 +78,9 @@ namespace Popryzhenok_Subbotina.Views.Tables
                 default:
                     break;
             }
-            switch (filter)
+            if (filter != "Все типы")
             {
-                case "МКК":
-                    listAgents = listAgents.Where(c => c.AgentType.Title == "МКК").ToList();
-                    break;
-
-                case "ОАО":
-                    listAgents = listAgents.Where(c => c.AgentType.Title == "ОАО").ToList();
-                    break;
-
-                case "ООО":
-                    listAgents = listAgents.Where(c => c.AgentType.Title == "ООО").ToList();
-                    break;
-
-                case "ЗАО":
-                    listAgents = listAgents.Where(c => c.AgentType.Title == "ЗАО").ToList();
-                    break;
-
-                case "МФО":
-                    listAgents = listAgents.Where(c => c.AgentType.Title == "МФО").ToList();
-                    break;
-
-                case "ПАО":
-                    listAgents = listAgents.Where(c => c.AgentType.Title == "ПАО").ToList();
-                    break;
-
-                default:
-                    break;
+                listAgents = listAgents.Where(c => c.AgentType.Title == filter).ToList();
             }
 
             if (!string.IsNullOrEmpty(search) && !string.IsNullOrWhiteSpace(search))
@@ -156,10 +132,15 @@ namespace Popryzhenok_Subbotina.Views.Tables
             NavigationService.Navigate(new PageAddAgent(new Agent()));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AgentGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Agent agent = AgentGrid.SelectedItem as Agent;
             NavigationService.Navigate(new PageAddAgent(agent));
+        }
+
+        private void Page_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            GetAgents();
         }
     }
 }
