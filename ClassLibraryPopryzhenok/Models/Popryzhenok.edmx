@@ -304,6 +304,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetSalesAfterDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="PopryzhenokModelStoreContainer">
           <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AgentPriorityHistory" EntityType="Self.AgentPriorityHistory" Schema="dbo" store:Type="Tables" />
@@ -733,6 +737,14 @@
             <End Role="Material" EntitySet="Materials" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
+          <FunctionImport Name="test" ReturnType="Collection(Int32)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetSalesAfterDate" ReturnType="Collection(Int32)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -895,6 +907,7 @@
               <ScalarProperty Name="ID" ColumnName="SupplierID" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="GetSalesAfterDate" FunctionName="PopryzhenokModel.Store.GetSalesAfterDate" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -12,6 +12,8 @@ namespace ClassLibraryPopryzhenok.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class PopryzhenokEntities : DbContext
     {
@@ -38,5 +40,31 @@ namespace ClassLibraryPopryzhenok.Models
         public virtual DbSet<ProductType> ProductTypes { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
+    
+        public virtual ObjectResult<Nullable<int>> test(Nullable<System.DateTime> date, Nullable<int> id)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("test", dateParameter, idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetSalesAfterDate(Nullable<System.DateTime> date, Nullable<int> id)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetSalesAfterDate", dateParameter, idParameter);
+        }
     }
 }

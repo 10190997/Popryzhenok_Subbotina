@@ -1,4 +1,8 @@
-﻿namespace ClassLibraryPopryzhenok.Models
+﻿using ClassLibraryPopryzhenok.Utils;
+using System;
+using System.Linq;
+
+namespace ClassLibraryPopryzhenok.Models
 {
     public partial class Agent
     {
@@ -8,6 +12,15 @@
             set { }
         }
 
-        // TODO: public int SalesPerYear =>
+        readonly DateTime yearAgo = DateTime.Today.AddYears(-1);
+
+        public int SalesPerYear
+        {
+            get
+            {
+                var test = AppData.db.GetSalesAfterDate(yearAgo, ID).FirstOrDefault();
+                return test == null ? 0 : (int)test;
+            }
+        }
     }
 }

@@ -30,6 +30,7 @@ namespace Popryzhenok_Subbotina
             }
             DataContext = NewAgent;
             cbType.ItemsSource = AppData.db.AgentTypes.ToList();
+            MessageBox.Show(NewAgent.SalesPerYear.ToString());
         }
 
         private void buttonLogo_Click(object sender, RoutedEventArgs e)
@@ -47,13 +48,15 @@ namespace Popryzhenok_Subbotina
             {
                 string filename = openFileDialog.FileName;
                 photo.Source = new BitmapImage(new Uri(filename));
-                tbLogo.Text = Path.GetFileName(filename);
+                tbLogo.Text = "/agents/" + Path.GetFileName(filename);
                 try
                 {
-                    File.Copy(filename, $"{projectDirectory}/Popryzhenok_Subbotina/agents/{tbLogo.Text}");
+                    File.Copy(filename, $"{projectDirectory}/Popryzhenok_Subbotina{tbLogo.Text}");
+                    // TODO: RESCAN AGENTS FOLDER
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message.ToString());
                     return;
                 }
             }
@@ -108,7 +111,7 @@ namespace Popryzhenok_Subbotina
             }
             try
             {
-                NewAgent.Logo = $"\\agents\\{tbLogo.Text}";
+                NewAgent.Logo = tbLogo.Text;
                 AppData.db.SaveChanges();
                 MessageBox.Show("Информация сохранена");
                 NavigationService.GoBack();
